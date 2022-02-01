@@ -39,7 +39,7 @@ public class TestTwo {
         driver.findElement(By.xpath("//div/a[@title='Значки']")).click();
         List<WebElement> catalogBadge = driver.findElements(By.xpath("//a[contains(@href, 'znachki')]/ancestor::div[@data-controller='CatalogItem']"));
         //Найти товар "Звезда на погоны из золота" и нажать на него
-        catalogBadge.stream().filter(f -> f.getText().contains("Звезда на погоны из золота")).findFirst().get().click();
+        catalogBadge.stream().filter(f -> f.getText().contains("Звезда на погоны из золота арт. 74122")).findFirst().get().click();
         //Нажать кнопку "В корзину"
         driver.findElement(By.xpath("//a[.='В корзину']")).click();
         Thread.sleep(3000);
