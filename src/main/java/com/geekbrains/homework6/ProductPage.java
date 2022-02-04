@@ -1,5 +1,6 @@
 package com.geekbrains.homework6;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = LIKE_BUTTON_LOCATOR_BY_XPATH)
     private WebElement likeButton;
 
+    @Step("Добавить товар в Избранное")
     public ProductPage likeProduct() {
         likeButton.click();
         return this;
@@ -31,11 +33,8 @@ public class ProductPage extends BasePage {
     private final static String ADDED_TO_FAV_XPATH_LOCATOR = "//a[.='Золотые серьги с ситал хризолитом и фианитом арт. 12390сх']";
     @FindBy(xpath = ADDED_TO_FAV_XPATH_LOCATOR)
     private WebElement addedToFavoriteElement;
+    @Step("Проверить, что товар находится в Избранном")
     public void checkFavProduct() {
         assertThat(addedToFavoriteElement, isDisplayed());
     }
-
-
-
-
 }

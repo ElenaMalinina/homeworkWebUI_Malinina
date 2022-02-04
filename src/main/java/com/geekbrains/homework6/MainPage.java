@@ -1,5 +1,6 @@
 package com.geekbrains.homework6;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -18,6 +19,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[.='Войти']")
     private WebElement loginButton;
 
+    @Step("Клик на кнопку логина главной страницы")
     public  LoginPage clickLoginButton() {
         loginButton.click();
         return new LoginPage(driver);
@@ -26,6 +28,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='mainMenu']/ul/li/a[.='Каталог продукции']")
     private WebElement catalogButton;
 
+    @Step("Клик на кнопку Каталог продукции")
     public  MainPage clickCatalogButton() {
         catalogButton.click();
         return this;
@@ -34,6 +37,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//li[@class='nav-item']/a[.='Контакты']")
     private WebElement contactsButton;
 
+    @Step("Клик на кнопку Контакты")
     public MainPage clickContactsButton() {
         contactsButton.click();
         return this;
@@ -41,6 +45,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@class='social-networks-item']/a[contains(@href, 'vk.com')]")
     private WebElement vkButton;
 
+    @Step("Клик на кнопку В Контакте")
     public MainPage clickVkButton() {
         vkButton.click();
         return this;
@@ -55,6 +60,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div/a[@title='Серьги']")
     private WebElement earringsButton;
 
+    @Step("Клик на кнопку Серьги")
     public  MainPage clickEarringsButton() {
         earringsButton.click();
         return this;
@@ -62,6 +68,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div/a[@title='Значки']")
     private WebElement badgeButton;
 
+    @Step("Клик на кнопку Значки")
     public  MainPage clickBadgeButton() {
         badgeButton.click();
         return this;
@@ -72,11 +79,13 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[contains(@href, 'znachki')]/ancestor::div[@data-controller='CatalogItem']")
     private List<WebElement> catalogBadge;
 
+    @Step("Клик на товар Серьги с наименованием")
     public ProductPage clickProductByName(String productName) {
         catalogEarrings.stream().filter(f -> f.getText().contains(productName)).findFirst().get().click();
         return new ProductPage(driver);
     }
 
+    @Step("Клик на товар Значки с наименованием")
     public SetProductPage clickProductByNameTwo(String productNameTwo) {
         catalogBadge.stream().filter(f -> f.getText().contains(productNameTwo)).findFirst().get().click();
         return new SetProductPage(driver);

@@ -1,5 +1,6 @@
 package com.geekbrains.homework6;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,7 @@ public class SetProductPage extends BasePage {
     @FindBy(xpath = CART_BY_XPATH)
     private WebElement cartButton;
 
+    @Step("Добавить товар в Корзину")
     public SetProductPage addProductCart() throws InterruptedException {
         cartButton.click();
         Thread.sleep(3000);
@@ -25,6 +27,7 @@ public class SetProductPage extends BasePage {
     @FindBy(xpath = "//a[.='Перейти в корзину']")
     private WebElement goToCartButton;
 
+    @Step("Перейти в корзину")
     public SetProductPage cartProduct() {
         goToCartButton.click();
         return this;
@@ -33,6 +36,7 @@ public class SetProductPage extends BasePage {
     private final static String SET_PRODUCT_XPATH_LOCATOR = "//a[.='Звезда на погоны из золота']";
     @FindBy(xpath = SET_PRODUCT_XPATH_LOCATOR)
     private WebElement setProductElement;
+    @Step("Проверить, что товар находится в корзине")
     public void checkSetProduct() {
         assertThat(setProductElement, isDisplayed());
     }
